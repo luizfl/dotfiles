@@ -1,0 +1,14 @@
+.config/ncmpcpp/error.log
+
+.config/ranger/colorschemes/__pycache__
+.config/ranger/colorschemes/__init__.py
+.config/ranger/bookmarks
+.config/ranger/history
+.config/ranger/tagged
+
+.config/mpd/playlists
+.config/mpd/database
+.config/mpd/log
+.config/mpd/pid
+.config/mpd/state
+.config/mpd/sticker.sql
