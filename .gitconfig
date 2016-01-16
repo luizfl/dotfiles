@@ -1,0 +1,44 @@
+[user]
+	name = Luiz F.
+	email = luiz.efe20@gmail.com
+[core]
+	editor = nvim
+	pager = less
+[alias]
+	st = status
+	ci = commit
+	co = checkout
+	br = branch
+	up = rebase
+	pl = pull
+	pu = push
+[color]
+	branch = auto
+	ui = auto
+	status = auto
+	showbranch = auto
+	grep = auto
+[color "status"]
+	added = 10 bold
+	branch = 11
+	changed = 14
+	header = normal
+	nobranch = 13
+	untracked = 8
+[color "branch"]
+	current = 11
+	local = 14 bold
+	plain = 8
+	remote = 12
+	upstream = 10
+[color "diff"]
+	old = 9
+	new = 10 bold
+	plain = 13
+	meta = 14
+	frag = 12
+	func = 11
+	commit = 10
+	whitespace = 9 bold
+[push]
+	default = matching
