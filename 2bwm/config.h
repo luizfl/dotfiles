@@ -1,7 +1,9 @@
 ///---User configurable stuff---///
 #include <X11/XF86keysym.h>
+
 ///---Modifiers---///
 #define MOD             XCB_MOD_MASK_4       /* Super/Windows key  or check xmodmap(1) with -pm  defined in /usr/include/xcb/xproto.h */
+
 ///--Speed---///
 /* Move this many pixels when moving or resizing with keyboard unless the window has hints saying otherwise.
  *0)move step slow   1)move step fast
@@ -11,10 +13,12 @@ static const uint16_t movements[] = {20,40,15,400};
 static const bool     resize_by_line          = true;
 /* the ratio used when resizing and keeping the aspect */
 static const float    resize_keep_aspect_ratio= 1.03;
+
 ///---Offsets---///
 /*0)offsetx          1)offsety
  *2)maxwidth         3)maxheight */
 static const uint8_t offsets[] = {0,0,0,0};
+
 ///---Colors---///
 /*0)focuscol         1)unfocuscol
  *2)fixedcol         3)unkilcol
@@ -26,12 +30,14 @@ static const char *colors[] = {"#8c644c","#332d29","#7a8c5c","#ff6666","#cc9933"
  */
 /* if this is set to true the inner border and outer borders colors will be swapped */
 static const bool inverted_colors = false;
+
 ///---Cursor---///
 /* default position of the cursor:
  * correct values are:
  * TOP_LEFT, TOP_RIGHT, BOTTOM_LEFT, BOTTOM_RIGHT, MIDDLE
  * All these are relative to the current window. */
 #define CURSOR_POSITION MIDDLE
+
 ///---Borders---///
 /*0) Outer border size. If you put this negative it will be a square.
  *1) Full borderwidth    2) Magnet border size
@@ -40,16 +46,21 @@ static const uint8_t borders[] = {2,4,2,4};
 /* Windows that won't have a border.*/
 #define LOOK_INTO "WM_NAME"
 static const char *ignore_names[] = {"bar"};
+
 ///--Menus and Programs---///
-static const char *menucmd[]   = { "rofi", "-show", "run", NULL };
-static const char *browser[]   = { "chromium",NULL};
-static const char *terminal[]  = { "urxvtc", NULL };
-static const char *click1[]    = { "xdotool","click", "1", NULL };
-static const char *click2[]    = { "xdotool","click", "2", NULL };
-static const char *click3[]    = { "xdotool","click", "3", NULL };
-static const char *vol_up[]    = { "amixer", "set", "Master", "unmute", "3%+", "-q", NULL };
-static const char *vol_down[]  = { "amixer", "set", "Master", "unmute", "3%-", "-q", NULL };
-static const char *vol_mute[]  = { "amixer", "set", "Master", "toggle", NULL };
+static const char *menucmd[]    = { "rofi", "-show", "run", NULL };
+static const char *browser[]    = { "chromium",NULL};
+static const char *terminal[]   = { "urxvtc", NULL };
+static const char *lockcmd[]    = { "screenlock", NULL };
+static const char *click1[]     = { "xdotool","click", "1", NULL };
+static const char *click2[]     = { "xdotool","click", "2", NULL };
+static const char *click3[]     = { "xdotool","click", "3", NULL };
+static const char *vol_up[]     = { "amixer", "set", "Master", "unmute", "3%+", "-q", NULL };
+static const char *vol_down[]   = { "amixer", "set", "Master", "unmute", "3%-", "-q", NULL };
+static const char *vol_mute[]   = { "amixer", "set", "Master", "toggle", NULL };
+static const char *mpd_next[]   = { "mpc", "next", NULL };
+static const char *mpd_prev[]   = { "mpc", "prev", NULL };
+static const char *mpd_toggle[] = { "mpc", "toggle", NULL };
 
 ///--Custom foo---///
 static void halfandcentered(const Arg *arg)
@@ -83,9 +94,13 @@ static key keys[] = {
   {  MOD ,              XK_Return,     start,             {.com = terminal}},
   {  MOD ,              XK_p,          start,             {.com = menucmd}},
   {  MOD ,              XK_v,          start,             {.com = browser}},
+  {  MOD ,              XK_F12,        start,             {.com = lockcmd}},
   {  0x000000 ,         XF86XK_AudioRaiseVolume, start,   {.com = vol_up}},
   {  0x000000 ,         XF86XK_AudioLowerVolume, start,   {.com = vol_down}},
   {  0x000000 ,         XF86XK_AudioMute, start,          {.com = vol_mute}},
+  {  0x000000 ,         XF86XK_AudioNext, start,          {.com = mpd_next}},
+  {  0x000000 ,         XF86XK_AudioPrev, start,          {.com = mpd_prev}},
+  {  0x000000 ,         XF86XK_AudioPlay, start,          {.com = mpd_toggle}},
   // Focus to next/previous window
   {  MOD ,              XK_w,          focusnext,         {.i=TWOBWM_FOCUS_NEXT}},
   {  MOD |SHIFT,        XK_w,          focusnext,         {.i=TWOBWM_FOCUS_PREVIOUS}},
@@ -155,16 +170,16 @@ static key keys[] = {
   //unfold horizontally
   {  MOD |SHIFT|CONTROL,XK_n,          maxhalf,           {.i=TWOBWM_MAXHALF_UNFOLD_HORIZONTAL}},
   // Next/Previous screen
-  {  MOD ,              XK_comma,      changescreen,      {.i=TWOBWM_NEXT_SCREEN}},
-  {  MOD ,              XK_period,     changescreen,      {.i=TWOBWM_PREVIOUS_SCREEN}},
+  {  MOD ,              XK_bracketright, changescreen,    {.i=TWOBWM_NEXT_SCREEN}},
+  {  MOD ,              XK_bracketleft, changescreen,     {.i=TWOBWM_PREVIOUS_SCREEN}},
   // Raise or lower a window
   {  MOD ,              XK_r,          raiseorlower,      {}},
   // Next/Previous workspace
-  {  MOD ,              XK_v,          nextworkspace,     {}},
-  {  MOD ,              XK_c,          prevworkspace,     {}},
+  {  MOD ,              XK_period,     nextworkspace,     {}},
+  {  MOD ,              XK_comma,      prevworkspace,     {}},
   // Move to Next/Previous workspace
-  {  MOD |SHIFT ,       XK_v,          sendtonextworkspace,{}},
-  {  MOD |SHIFT ,       XK_c,          sendtoprevworkspace,{}},
+  {  MOD |SHIFT ,       XK_period,     sendtonextworkspace,{}},
+  {  MOD |SHIFT ,       XK_comma,      sendtoprevworkspace,{}},
   // Iconify the window
   {  MOD ,              XK_i,          hide,              {}},
   // Make the window unkillable
@@ -190,9 +205,9 @@ static key keys[] = {
      DESKTOPCHANGE(     XK_0,                             9)
 };
 static Button buttons[] = {
-  {  MOD        ,XCB_BUTTON_INDEX_1,     mousemotion,   {.i=TWOBWM_MOVE}},
-  {  MOD        ,XCB_BUTTON_INDEX_3,     mousemotion,   {.i=TWOBWM_RESIZE}},
-  {  MOD|CONTROL,XCB_BUTTON_INDEX_3,     start,         {.com = menucmd}},
+  {  MOD        ,XCB_BUTTON_INDEX_1,     mousemotion,     {.i=TWOBWM_MOVE}},
+  {  MOD        ,XCB_BUTTON_INDEX_3,     mousemotion,     {.i=TWOBWM_RESIZE}},
+  {  MOD|CONTROL,XCB_BUTTON_INDEX_3,     start,           {.com = menucmd}},
   {  MOD|SHIFT,  XCB_BUTTON_INDEX_1,     changeworkspace, {.i=0}},
   {  MOD|SHIFT,  XCB_BUTTON_INDEX_3,     changeworkspace, {.i=1}},
   {  MOD|ALT,    XCB_BUTTON_INDEX_1,     changescreen,    {.i=1}},
