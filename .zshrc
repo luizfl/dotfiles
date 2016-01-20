@@ -10,6 +10,7 @@ PATHS=(
   /bin
   /sbin
   /usr/bin
+  /usr/bin/core_perl
   /usr/bin/site_perl
   /usr/bin/vendor_perl
   /usr/local/bin
@@ -335,7 +336,15 @@ function precmd()
   MIN=1
   MAX=6
   RANDOM_COLOR="$(( ${MIN}+(`od -An -N2 -i /dev/random` )%(${MAX}-${MIN}+1) ))"
-  export PS1=" %F{$RANDOM_COLOR}────%f "
+  PROMPT="%F{$RANDOM_COLOR}────%f "
+
+  #DIR=`pwd|sed -e "s|$HOME|~|"`;
+  #if [ ${#DIR} -gt 30 ]; then
+  #  CWD="${DIR:0:12}...${DIR:${#DIR}-15}"
+  #else
+  #  CWD="$DIR"
+  #fi
+  #RPROMPT="%F{8}$CWD"
 
   print -Pn "\e]0;%n@%M:%~\a" ]
 }
@@ -361,8 +370,8 @@ ZSH_HIGHLIGHT_STYLES[command]="fg=blue,bold"
 ZSH_HIGHLIGHT_STYLES[hashed-command]="fg=blue,bold"
 ZSH_HIGHLIGHT_STYLES[builtin]="fg=yellow,bold"
 
-ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
-ZSH_HIGHLIGHT_PATTERNS+=('sudo' 'fg=white,bold,bg=red')
+ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=black,bg=red')
+ZSH_HIGHLIGHT_PATTERNS+=('sudo' 'fg=black,bg=red')
 #}}}
 
 #{{{ zsh-history-substring-search
