@@ -21,7 +21,7 @@ class Default(ColorScheme):
             if context.empty or context.error:
                 bg = red
             if context.border:
-                fg = white
+                fg = black
             if context.media:
                 if context.image:
                     fg = yellow
@@ -30,7 +30,7 @@ class Default(ColorScheme):
             if context.container:
                 fg = red
             if context.directory:
-                fg = white
+                fg = default
             elif context.executable and not \
                     any((context.media, context.container,
                         context.fifo, context.socket)):
@@ -71,7 +71,8 @@ class Default(ColorScheme):
             if context.hostname:
                 fg = red
             elif context.directory:
-                fg = white
+                attr = bold
+                fg = black
             elif context.tab:
                 if context.good:
                     bg = green

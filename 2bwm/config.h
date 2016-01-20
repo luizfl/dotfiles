@@ -36,7 +36,7 @@ static const bool inverted_colors = false;
 /*0) Outer border size. If you put this negative it will be a square.
  *1) Full borderwidth    2) Magnet border size
  *3) Resize border size  */
-static const uint8_t borders[] = {3,5,2,4};
+static const uint8_t borders[] = {2,4,2,4};
 /* Windows that won't have a border.*/
 #define LOOK_INTO "WM_NAME"
 static const char *ignore_names[] = {"bar"};
@@ -79,93 +79,6 @@ static void halfandcentered(const Arg *arg)
 {  MOD |SHIFT,       K,              sendtoworkspace, {.i=N}},
 static key keys[] = {
   /* modifier           key            function           argument */
-  // Focus to next/previous window
-  {  MOD ,              XK_w,          focusnext,         {.i=0}},
-  {  MOD |SHIFT,        XK_w,          focusnext,         {.i=1}},
-  // Kill a window
-  {  MOD |SHIFT,        XK_c,          deletewin,         {.i=0}},
-  // Resize a window
-  {  MOD |SHIFT,        XK_k,          resizestep,        {.i=2}},
-  {  MOD |SHIFT,        XK_j,          resizestep,        {.i=1}},
-  {  MOD |SHIFT,        XK_l,          resizestep,        {.i=3}},
-  {  MOD |SHIFT,        XK_h,          resizestep,        {.i=0}},
-  // Resize a window slower
-  {  MOD |SHIFT|CONTROL,XK_k,          resizestep,        {.i=6}},
-  {  MOD |SHIFT|CONTROL,XK_j,          resizestep,        {.i=5}},
-  {  MOD |SHIFT|CONTROL,XK_l,          resizestep,        {.i=7}},
-  {  MOD |SHIFT|CONTROL,XK_h,          resizestep,        {.i=4}},
-  // Move a window
-  {  MOD ,              XK_k,          movestep,          {.i=2}},
-  {  MOD ,              XK_j,          movestep,          {.i=1}},
-  {  MOD ,              XK_l,          movestep,          {.i=3}},
-  {  MOD ,              XK_h,          movestep,          {.i=0}},
-  // Move a window slower
-  {  MOD |CONTROL,      XK_k,          movestep,          {.i=6}},
-  {  MOD |CONTROL,      XK_j,          movestep,          {.i=5}},
-  {  MOD |CONTROL,      XK_l,          movestep,          {.i=7}},
-  {  MOD |CONTROL,      XK_h,          movestep,          {.i=4}},
-  // Teleport the window to an area of the screen.
-  // Center:
-  {  MOD ,              XK_g,          teleport,          {.i=0}},
-  // Center y:
-  {  MOD |SHIFT,        XK_g,          teleport,          {.i=3}},
-  // Center x:
-  {  MOD |CONTROL,      XK_g,          teleport,          {.i=-3}},
-  // Top left:
-  {  MOD ,              XK_y,          teleport,          {.i=2}},
-  // Top right:
-  {  MOD ,              XK_u,          teleport,          {.i=-2}},
-  // Bottom left:
-  {  MOD ,              XK_b,          teleport,          {.i=1}},
-  // Bottom right:
-  {  MOD ,              XK_n,          teleport,          {.i=-1}},
-  // Resize while keeping the window aspect
-  {  MOD ,              XK_Home,       resizestep_aspect, {.i=0}},
-  {  MOD ,              XK_End,        resizestep_aspect, {.i=1}},
-  // Full screen window without borders
-  {  MOD ,              XK_x,         maximize,          {.i=0}},
-  //Full screen window without borders overiding offsets
-  {  MOD |SHIFT ,       XK_x,          maximize,          {.i=1}},
-  // Maximize vertically
-  {  MOD ,              XK_m,          maxvert_hor,       {.i=1}},
-  // Maximize horizontally
-  {  MOD |SHIFT,        XK_m,          maxvert_hor,       {.i=0}},
-  // Maximize and move
-  // vertically left
-  {  MOD |SHIFT,        XK_y,          maxhalf,           {.i=2}},
-  // vertically right
-  {  MOD |SHIFT,        XK_u,          maxhalf,           {.i=1}},
-  // horizontally left
-  {  MOD |SHIFT,        XK_b,          maxhalf,           {.i=-1}},
-  // horizontally right
-  {  MOD |SHIFT,        XK_n,          maxhalf,           {.i=-2}},
-  //fold half vertically
-  {  MOD |SHIFT|CONTROL,XK_y,          maxhalf,           {.i=4}},
-  //fold half horizontally
-  {  MOD |SHIFT|CONTROL,XK_b,          maxhalf,           {.i=-4}},
-  //unfold vertically
-  {  MOD |SHIFT|CONTROL,XK_u,          maxhalf,           {.i=3}},
-  //unfold horizontally
-  {  MOD |SHIFT|CONTROL,XK_n,          maxhalf,           {.i=-3}},
-  // Next/Previous screen
-  {  MOD ,              XK_comma,      changescreen,      {.i=1}},
-  {  MOD ,              XK_period,     changescreen,      {.i=0}},
-  // Raise or lower a window
-  {  MOD ,              XK_r,          raiseorlower,      {.i=0}},
-  // Next/Previous workspace
-  {  MOD ,              XK_v,          nextworkspace,     {.i=0}},
-  {  MOD ,              XK_c,          prevworkspace,     {.i=0}},
-  // Move to Next/Previous workspace
-  {  MOD |SHIFT ,       XK_v,          sendtonextworkspace,{.i=0}},
-  {  MOD |SHIFT ,       XK_c,          sendtoprevworkspace,{.i=0}},
-  // Iconify the window
-  {  MOD ,              XK_i,          hide,              {.i=0}},
-  // Make the window unkillable
-  {  MOD ,              XK_a,          unkillable,        {.i=0}},
-  // Make the window appear always on top
-  {  MOD,               XK_t,          always_on_top,     {.i=0}},
-  // Make the window stay on all workspaces
-  {  MOD ,              XK_f,          fix,               {.i=0}},
   // Start programs
   {  MOD ,              XK_Return,     start,             {.com = terminal}},
   {  MOD ,              XK_p,          start,             {.com = menucmd}},
@@ -173,12 +86,98 @@ static key keys[] = {
   {  0x000000 ,         XF86XK_AudioRaiseVolume, start,   {.com = vol_up}},
   {  0x000000 ,         XF86XK_AudioLowerVolume, start,   {.com = vol_down}},
   {  0x000000 ,         XF86XK_AudioMute, start,          {.com = vol_mute}},
+  // Focus to next/previous window
+  {  MOD ,              XK_w,          focusnext,         {.i=TWOBWM_FOCUS_NEXT}},
+  {  MOD |SHIFT,        XK_w,          focusnext,         {.i=TWOBWM_FOCUS_PREVIOUS}},
+  // Kill a window
+  {  MOD |SHIFT,        XK_c,          deletewin,         {}},
+  // Resize a window
+  {  MOD |SHIFT,        XK_k,          resizestep,        {.i=TWOBWM_RESIZE_UP}},
+  {  MOD |SHIFT,        XK_j,          resizestep,        {.i=TWOBWM_RESIZE_DOWN}},
+  {  MOD |SHIFT,        XK_l,          resizestep,        {.i=TWOBWM_RESIZE_RIGHT}},
+  {  MOD |SHIFT,        XK_h,          resizestep,        {.i=TWOBWM_RESIZE_LEFT}},
+  // Resize a window slower
+  {  MOD |SHIFT|CONTROL,XK_k,          resizestep,        {.i=TWOBWM_RESIZE_UP_SLOW}},
+  {  MOD |SHIFT|CONTROL,XK_j,          resizestep,        {.i=TWOBWM_RESIZE_DOWN_SLOW}},
+  {  MOD |SHIFT|CONTROL,XK_l,          resizestep,        {.i=TWOBWM_RESIZE_RIGHT_SLOW}},
+  {  MOD |SHIFT|CONTROL,XK_h,          resizestep,        {.i=TWOBWM_RESIZE_LEFT_SLOW}},
+  // Move a window
+  {  MOD ,              XK_k,          movestep,          {.i=TWOBWM_MOVE_UP}},
+  {  MOD ,              XK_j,          movestep,          {.i=TWOBWM_MOVE_DOWN}},
+  {  MOD ,              XK_l,          movestep,          {.i=TWOBWM_MOVE_RIGHT}},
+  {  MOD ,              XK_h,          movestep,          {.i=TWOBWM_MOVE_LEFT}},
+  // Move a window slower
+  {  MOD |CONTROL,      XK_k,          movestep,          {.i=TWOBWM_MOVE_UP_SLOW}},
+  {  MOD |CONTROL,      XK_j,          movestep,          {.i=TWOBWM_MOVE_DOWN_SLOW}},
+  {  MOD |CONTROL,      XK_l,          movestep,          {.i=TWOBWM_MOVE_RIGHT_SLOW}},
+  {  MOD |CONTROL,      XK_h,          movestep,          {.i=TWOBWM_MOVE_LEFT_SLOW}},
+  // Teleport the window to an area of the screen.
+  // Center:
+  {  MOD ,              XK_g,          teleport,          {.i=TWOBWM_TELEPORT_CENTER}},
+  // Center y:
+  {  MOD |SHIFT,        XK_g,          teleport,          {.i=TWOBWM_TELEPORT_CENTER_Y}},
+  // Center x:
+  {  MOD |CONTROL,      XK_g,          teleport,          {.i=TWOBWM_TELEPORT_CENTER_X}},
+  // Top left:
+  {  MOD ,              XK_y,          teleport,          {.i=TWOBWM_TELEPORT_TOP_LEFT}},
+  // Top right:
+  {  MOD ,              XK_u,          teleport,          {.i=TWOBWM_TELEPORT_TOP_RIGHT}},
+  // Bottom left:
+  {  MOD ,              XK_b,          teleport,          {.i=TWOBWM_TELEPORT_BOTTOM_LEFT}},
+  // Bottom right:
+  {  MOD ,              XK_n,          teleport,          {.i=TWOBWM_TELEPORT_BOTTOM_RIGHT}},
+  // Resize while keeping the window aspect
+  {  MOD ,              XK_Home,       resizestep_aspect, {.i=TWOBWM_RESIZE_KEEP_ASPECT_GROW}},
+  {  MOD ,              XK_End,        resizestep_aspect, {.i=TWOBWM_RESIZE_KEEP_ASPECT_SHRINK}},
+  // Full screen window without borders
+  {  MOD ,              XK_x,         maximize,          {.i=TWOBWM_FULLSCREEN}},
+  //Full screen window without borders overiding offsets
+  {  MOD |SHIFT ,       XK_x,          maximize,          {.i=TWOBWM_FULLSCREEN_OVERRIDE_OFFSETS}},
+  // Maximize vertically
+  {  MOD ,              XK_m,          maxvert_hor,       {.i=TWOBWM_MAXIMIZE_VERTICALLY}},
+  // Maximize horizontally
+  {  MOD |SHIFT,        XK_m,          maxvert_hor,       {.i=TWOBWM_MAXIMIZE_HORIZONTALLY}},
+  // Maximize and move
+  // vertically left
+  {  MOD |SHIFT,        XK_y,          maxhalf,           {.i=TWOBWM_MAXHALF_VERTICAL_LEFT}},
+  // vertically right
+  {  MOD |SHIFT,        XK_u,          maxhalf,           {.i=TWOBWM_MAXHALF_VERTICAL_RIGHT}},
+  // horizontally left
+  {  MOD |SHIFT,        XK_b,          maxhalf,           {.i=TWOBWM_MAXHALF_HORIZONTAL_BOTTOM}},
+  // horizontally right
+  {  MOD |SHIFT,        XK_n,          maxhalf,           {.i=TWOBWM_MAXHALF_HORIZONTAL_TOP}},
+  //fold half vertically
+  {  MOD |SHIFT|CONTROL,XK_y,          maxhalf,           {.i=TWOBWM_MAXHALF_FOLD_VERTICAL}},
+  //fold half horizontally
+  {  MOD |SHIFT|CONTROL,XK_b,          maxhalf,           {.i=TWOBWM_MAXHALF_FOLD_HORIZONTAL}},
+  //unfold vertically
+  {  MOD |SHIFT|CONTROL,XK_u,          maxhalf,           {.i=TWOBWM_MAXHALF_UNFOLD_VERTICAL}},
+  //unfold horizontally
+  {  MOD |SHIFT|CONTROL,XK_n,          maxhalf,           {.i=TWOBWM_MAXHALF_UNFOLD_HORIZONTAL}},
+  // Next/Previous screen
+  {  MOD ,              XK_comma,      changescreen,      {.i=TWOBWM_NEXT_SCREEN}},
+  {  MOD ,              XK_period,     changescreen,      {.i=TWOBWM_PREVIOUS_SCREEN}},
+  // Raise or lower a window
+  {  MOD ,              XK_r,          raiseorlower,      {}},
+  // Next/Previous workspace
+  {  MOD ,              XK_v,          nextworkspace,     {}},
+  {  MOD ,              XK_c,          prevworkspace,     {}},
+  // Move to Next/Previous workspace
+  {  MOD |SHIFT ,       XK_v,          sendtonextworkspace,{}},
+  {  MOD |SHIFT ,       XK_c,          sendtoprevworkspace,{}},
+  // Iconify the window
+  {  MOD ,              XK_i,          hide,              {}},
+  // Make the window unkillable
+  {  MOD ,              XK_a,          unkillable,        {}},
+  // Make the window appear always on top
+  {  MOD,               XK_t,          always_on_top,     {}},
+  // Make the window stay on all workspaces
+  {  MOD ,              XK_f,          fix,               {}},
   // Exit or restart 2bwm
   {  MOD |CONTROL,      XK_q,          twobwm_exit,       {.i=0}},
   {  MOD |CONTROL,      XK_r,          twobwm_restart,    {.i=0}},
   {  MOD ,              XK_space,      halfandcentered,   {.i=0}},
-
-    // Change current workspace
+  // Change current workspace
      DESKTOPCHANGE(     XK_1,                             0)
      DESKTOPCHANGE(     XK_2,                             1)
      DESKTOPCHANGE(     XK_3,                             2)
@@ -191,10 +190,11 @@ static key keys[] = {
      DESKTOPCHANGE(     XK_0,                             9)
 };
 static Button buttons[] = {
-    {  MOD ,       XCB_BUTTON_INDEX_1,     mousemotion,     {.i=TWOBWM_MOVE}},
-    {  MOD ,       XCB_BUTTON_INDEX_3,     mousemotion,     {.i=TWOBWM_RESIZE}},
-    {  MOD|SHIFT,  XCB_BUTTON_INDEX_1,     changeworkspace, {.i=0}},
-    {  MOD|SHIFT,  XCB_BUTTON_INDEX_3,     changeworkspace, {.i=1}},
-    {  MOD|ALT,    XCB_BUTTON_INDEX_1,     changescreen,    {.i=1}},
-    {  MOD|ALT,    XCB_BUTTON_INDEX_3,     changescreen,    {.i=0}}
+  {  MOD        ,XCB_BUTTON_INDEX_1,     mousemotion,   {.i=TWOBWM_MOVE}},
+  {  MOD        ,XCB_BUTTON_INDEX_3,     mousemotion,   {.i=TWOBWM_RESIZE}},
+  {  MOD|CONTROL,XCB_BUTTON_INDEX_3,     start,         {.com = menucmd}},
+  {  MOD|SHIFT,  XCB_BUTTON_INDEX_1,     changeworkspace, {.i=0}},
+  {  MOD|SHIFT,  XCB_BUTTON_INDEX_3,     changeworkspace, {.i=1}},
+  {  MOD|ALT,    XCB_BUTTON_INDEX_1,     changescreen,    {.i=1}},
+  {  MOD|ALT,    XCB_BUTTON_INDEX_3,     changescreen,    {.i=0}}
 };

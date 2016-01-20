@@ -1,41 +1,80 @@
-#include "/home/loinz/.xcolors/antique"
+#include ".xcolors/achtung"
 
 !{{{ URxvt
-!URxvt*font:             -benis-lemon-medium-r-normal--10-110-75-75-m-50-iso8859-1
-!URxvt*boldFont:         -benis-lemon-medium-r-normal--10-110-75-75-m-50-iso8859-1
-!URxvt*italicFont:       -benis-lemon-medium-r-normal--10-110-75-75-m-50-iso8859-1
-!URxvt*boldItalicFont:   -benis-lemon-medium-r-normal--10-110-75-75-m-50-iso8859-1
-!URxvt*font:             -nil-profont-medium-r-normal--11-110-72-72-c-60-iso8859-1
-!URxvt*boldFont:         -nil-profont-medium-r-normal--11-110-72-72-c-60-iso8859-1
-!URxvt*italicFont:       -nil-profont-medium-r-normal--11-110-72-72-c-60-iso8859-1
-!URxvt*boldItalicFont:   -nil-profont-medium-r-normal--11-110-72-72-c-60-iso8859-1
-!URxvt*font:             -misc-fixed-medium-r-normal--10-70-100-100-c-60-iso8859-1
-!URxvt*boldFont:         -misc-fixed-medium-r-normal--10-70-100-100-c-60-iso8859-1
-!URxvt*italicFont:       -misc-fixed-medium-r-normal--10-70-100-100-c-60-iso8859-1
-!URxvt*boldItalicFont:   -misc-fixed-medium-r-normal--10-70-100-100-c-60-iso8859-1
-!URxvt*font:             -biatch-terminum-medium-r-normal--12-120-72-72-c-60-iso8859-1
-!URxvt*boldFont:         -biatch-terminum-medium-r-normal--12-120-72-72-c-60-iso8859-1
-!URxvt*italicFont:       -biatch-terminum-medium-r-normal--12-120-72-72-c-60-iso8859-1
-!URxvt*boldItalicFont:   -biatch-terminum-medium-r-normal--12-120-72-72-c-60-iso8859-1
+!URxvt*font:           -benis-lemon-medium-r-normal--10-110-75-75-m-50-iso8859-1
+!URxvt*boldFont:       -benis-lemon-medium-r-normal--10-110-75-75-m-50-iso8859-1
+!URxvt*italicFont:     -benis-lemon-medium-r-normal--10-110-75-75-m-50-iso8859-1
+!URxvt*boldItalicFont: -benis-lemon-medium-r-normal--10-110-75-75-m-50-iso8859-1
 
-URxvt*font:             xft:Hack:size=7.5
-URxvt*boldFont:         xft:Hack:size=7.5
+!URxvt*font:           -nil-profont-medium-r-normal--11-110-72-72-c-60-iso8859-1
+!URxvt*boldFont:       -nil-profont-medium-r-normal--11-110-72-72-c-60-iso8859-1
+!URxvt*italicFont:     -nil-profont-medium-r-normal--11-110-72-72-c-60-iso8859-1
+!URxvt*boldItalicFont: -nil-profont-medium-r-normal--11-110-72-72-c-60-iso8859-1
 
-!URxvt*font:             xft:Monaco:size=7.5
-!URxvt*boldFont:         xft:Monaco:size=7.5
+!URxvt*font:           -misc-fixed-medium-r-normal--10-70-100-100-c-60-iso8859-1
+!URxvt*boldFont:       -misc-fixed-medium-r-normal--10-70-100-100-c-60-iso8859-1
+!URxvt*italicFont:     -misc-fixed-medium-r-normal--10-70-100-100-c-60-iso8859-1
+!URxvt*boldItalicFont: -misc-fixed-medium-r-normal--10-70-100-100-c-60-iso8859-1
 
-URxvt.buffered:         true
-URxvt*letterSpace:      -2
-URxvt*lineSpace:        0
-URxvt*scrollBar:        false
-URxvt*internalBorder:   18
-URxvt*externalBorder:   0
+!URxvt*font:           -misc-fixed-medium-r-normal--13-100-100-100-c-70-iso8859-1
+!URxvt*boldFont:       -misc-fixed-medium-r-normal--13-100-100-100-c-70-iso8859-1
+!URxvt*italicFont:     -misc-fixed-medium-r-normal--13-100-100-100-c-70-iso8859-1
+!URxvt*boldItalicFont: -misc-fixed-medium-r-normal--13-100-100-100-c-70-iso8859-1
 
-URxvt*underlineURLs:    true
-URxvt*keysym.M-Escape:  perl:keyboard-select:activate
-URxvt*keysym.M-s:       perl:keyboard-select:search
-URxvt*keysym.M-u:       perl:url-select:select_next
-URxvt*url-launcher:     /usr/bin/chromium
+!URxvt*font:           -misc-fixed-medium-r-normal--14-110-100-100-c-70-iso8859-1
+!URxvt*boldFont:       -misc-fixed-medium-r-normal--14-110-100-100-c-70-iso8859-1
+!URxvt*italicFont:     -misc-fixed-medium-r-normal--14-110-100-100-c-70-iso8859-1
+!URxvt*boldItalicFont: -misc-fixed-medium-r-normal--14-110-100-100-c-70-iso8859-1
+
+!URxvt*font:           -misc-fixed-medium-r-semicondensed--13-100-100-100-c-60-iso8859-1
+!URxvt*boldFont:       -misc-fixed-medium-r-semicondensed--13-100-100-100-c-60-iso8859-1
+!URxvt*italicFont:     -misc-fixed-medium-r-semicondensed--13-100-100-100-c-60-iso8859-1
+!URxvt*boldItalicFont: -misc-fixed-medium-r-semicondensed--13-100-100-100-c-60-iso8859-1
+
+URxvt*font:           -biatch-terminum-medium-r-normal--12-120-72-72-c-60-iso8859-1
+URxvt*boldFont:       -biatch-terminum-medium-r-normal--12-120-72-72-c-60-iso8859-1
+URxvt*italicFont:     -biatch-terminum-medium-r-normal--12-120-72-72-c-60-iso8859-1
+URxvt*boldItalicFont: -biatch-terminum-medium-r-normal--12-120-72-72-c-60-iso8859-1
+
+!URxvt*font:           -xos4-terminus-medium-r-normal--14-140-72-72-c-80-iso8859-1
+!URxvt*boldFont:       -xos4-terminus-medium-r-normal--14-140-72-72-c-80-iso8859-1
+!URxvt*italicFont:     -xos4-terminus-medium-r-normal--14-140-72-72-c-80-iso8859-1
+!URxvt*boldItalicFont: -xos4-terminus-medium-r-normal--14-140-72-72-c-80-iso8859-1
+
+!URxvt*font:           -gohu-gohufont-medium-r-normal--14-100-100-100-c-80-iso8859-1
+!URxvt*boldFont:       -gohu-gohufont-medium-r-normal--14-100-100-100-c-80-iso8859-1
+!URxvt*italicFont:     -gohu-gohufont-medium-r-normal--14-100-100-100-c-80-iso8859-1
+!URxvt*boldItalicFont: -gohu-gohufont-medium-r-normal--14-100-100-100-c-80-iso8859-1
+
+!URxvt*font:           -beastie-terminus14-medium-r-normal--14-140-72-72-c-80-iso8859-1
+!URxvt*boldFont:       -beastie-terminus14-medium-r-normal--14-140-72-72-c-80-iso8859-1
+!URxvt*italicFont:     -beastie-terminus14-medium-r-normal--14-140-72-72-c-80-iso8859-1
+!URxvt*boldItalicFont: -beastie-terminus14-medium-r-normal--14-140-72-72-c-80-iso8859-1
+
+!URxvt*font:           xft:Hack:size=7.5
+!URxvt*boldFont:       xft:Hack:size=7.5
+
+!URxvt*font:           xft:Monaco:size=7.5
+!URxvt*boldFont:       xft:Monaco:size=7.5
+
+URxvt.buffered:        true
+!URxvt*letterSpace:     -2
+URxvt*lineSpace:       0
+URxvt*scrollBar:       false
+URxvt*internalBorder:  4
+URxvt*externalBorder:  0
+URxvt*cursorUnderline: true
+
+URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
+URxvt.url-select.launcher:  /usr/bin/chromium
+URxvt.url-select.underline: true
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+URxvt.keysym.M-s:           perl:keyboard-select:search
+URxvt.keysym.M-c:           perl:clipboard:copy
+URxvt.keysym.M-v:           perl:clipboard:paste
+URxvt.keysym.M-C-v:         perl:clipboard:paste_escaped
+URxvt.clipboard.autocopy:   true
 !}}}
 !{{{ Xfontsel
 XFontSel*menu*showUnselectable:       false
@@ -52,16 +91,22 @@ xclock*hourColor:   #504339
 xclock*secondColor: #806b5b
 !}}}
 !{{{ Rofi
-rofi.font:          fkp 11
-rofi.fullscreen:    true
-rofi.bw:            0
-rofi.eh:            2
-rofi.padding:       270
-rofi.glob:          true
-rofi.tokenize:      false
-rofi.color-enabled: true
-rofi.color-window:  argb:c31a1514, argb:0000000, argb:0000000
-rofi.color-normal:  argb:0fdf6e3, #998673, argb:0eee8d5, argb:0586e75, #eee8d5
-rofi.color-active:  argb:0fdf6e3, #268bd2, argb:0eee8d5, argb:0268bd2, #fdf6e3
-rofi.color-urgent:  argb:0fdf6e3, #dc322f, argb:0eee8d5, argb:0dc322f, #fdf6e3
+rofi.font:              fkp 11
+rofi.bw:                0
+rofi.width:             35
+rofi.eh:                1
+rofi.lines:             10
+rofi.fixed-num-lines:   true
+rofi.tokenize:          true
+rofi.regex:             true
+rofi.glob:              true
+rofi.case-sensitive:    false
+rofi.hide-scrollbar:    true
+rofi.separator-style:   solid
+rofi.terminal:          urxvtc
+rofi.ssh-command:       {terminal} -e {ssh-client} {host}
+rofi.run-shell-command: {terminal} -e {cmd}
+!rofi.sidebar-mode:      true
+
+rofi.bc:                argb:00000000
 !}}}

@@ -103,11 +103,6 @@ function mkcd()
   mkdir -p "$@"; cd "$_"
 }
 
-function precmd()
-{
-  print -Pn "\e]0;%n@%M:%~\a" ]
-}
-
 function chars()
 {
   echo "
@@ -335,20 +330,25 @@ fi
 #}}}
 
 #{{{ Prompt
-autoload -U colors && colors
+function precmd()
+{
+  MIN=1
+  MAX=6
+  RANDOM_COLOR="$(( ${MIN}+(`od -An -N2 -i /dev/random` )%(${MAX}-${MIN}+1) ))"
+  export PS1=" %F{$RANDOM_COLOR}────%f "
 
-PS1='%(1j.%B%F{black}%j .)%(0?..%B%F{red}%? )%B%F{blue}%#%f%b '
-PS2='%B%F{black}> %b%f'
-PS3='%B%F{white}?# %b%f%F{red}%# %f'
-PS4='%B%F{white}%_ %b%f%F{magenta}%# %f%B%F{white}+%N:%i %b%f%F{magenta}%# %f'
-#RPROMPT='%F{white}%~%f'
+  print -Pn "\e]0;%n@%M:%~\a" ]
+}
+
 #}}}
 
+#{{{ Misc
 # dircolors
 eval $( dircolors -b $HOME/.dir_colors )
 
 # command not found
 source "/usr/share/doc/pkgfile/command-not-found.zsh"
+#}}}
 
 #{{{ zsh-syntax-highlighting
 source "$ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
@@ -380,27 +380,3 @@ bindkey -M emacs '^N' history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 #}}}
-
-# Console colors
-if [ "$TERM" = "linux" ]; then
-  /bin/echo -e "
-  \e]P0332927
-  \e]P1745446
-  \e]P25e6647
-  \e]P37f8059
-  \e]P4555559
-  \e]P5595059
-  \e]P64c5955
-  \e]P7504339
-  \e]P84d3e3a
-  \e]P98c6554
-  \e]PA768059
-  \e]PB98996a
-  \e]PC6d6d73
-  \e]PD736773
-  \e]PE62736e
-  \e]PF806b5b
-  "
-  # get rid of artifacts
-  clear
-fi
