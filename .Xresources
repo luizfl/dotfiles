@@ -1,4 +1,9 @@
-#include ".xcolors/achtung"
+#include ".xcolors/gruvbox.mine"
+
+*font:           -biatch-terminum-medium-r-normal--12-120-72-72-c-60-iso8859-1
+*boldFont:       -biatch-terminum-medium-r-normal--12-120-72-72-c-60-iso8859-1
+*italicFont:     -biatch-terminum-medium-r-normal--12-120-72-72-c-60-iso8859-1
+*boldItalicFont: -biatch-terminum-medium-r-normal--12-120-72-72-c-60-iso8859-1
 
 !{{{ URxvt
 !URxvt*font:           -benis-lemon-medium-r-normal--10-110-75-75-m-50-iso8859-1
@@ -31,10 +36,10 @@
 !URxvt*italicFont:     -misc-fixed-medium-r-semicondensed--13-100-100-100-c-60-iso8859-1
 !URxvt*boldItalicFont: -misc-fixed-medium-r-semicondensed--13-100-100-100-c-60-iso8859-1
 
-URxvt*font:           -biatch-terminum-medium-r-normal--12-120-72-72-c-60-iso8859-1
-URxvt*boldFont:       -biatch-terminum-medium-r-normal--12-120-72-72-c-60-iso8859-1
-URxvt*italicFont:     -biatch-terminum-medium-r-normal--12-120-72-72-c-60-iso8859-1
-URxvt*boldItalicFont: -biatch-terminum-medium-r-normal--12-120-72-72-c-60-iso8859-1
+!URxvt*font:           -biatch-terminum-medium-r-normal--12-120-72-72-c-60-iso8859-1
+!URxvt*boldFont:       -biatch-terminum-medium-r-normal--12-120-72-72-c-60-iso8859-1
+!URxvt*italicFont:     -biatch-terminum-medium-r-normal--12-120-72-72-c-60-iso8859-1
+!URxvt*boldItalicFont: -biatch-terminum-medium-r-normal--12-120-72-72-c-60-iso8859-1
 
 !URxvt*font:           -xos4-terminus-medium-r-normal--14-140-72-72-c-80-iso8859-1
 !URxvt*boldFont:       -xos4-terminus-medium-r-normal--14-140-72-72-c-80-iso8859-1
@@ -51,19 +56,23 @@ URxvt*boldItalicFont: -biatch-terminum-medium-r-normal--12-120-72-72-c-60-iso885
 !URxvt*italicFont:     -beastie-terminus14-medium-r-normal--14-140-72-72-c-80-iso8859-1
 !URxvt*boldItalicFont: -beastie-terminus14-medium-r-normal--14-140-72-72-c-80-iso8859-1
 
-!URxvt*font:           xft:Hack:size=7.5
-!URxvt*boldFont:       xft:Hack:size=7.5
+!URxvt*font:           -jmk-neep alt-medium-r-semicondensed--11-100-75-75-c-50-iso8859-1
+!URxvt*boldFont:       -jmk-neep alt-medium-r-semicondensed--11-100-75-75-c-50-iso8859-1
+!URxvt*italicFont:     -jmk-neep alt-medium-r-semicondensed--11-100-75-75-c-50-iso8859-1
+!URxvt*boldItalicFont: -jmk-neep alt-medium-r-semicondensed--11-100-75-75-c-50-iso8859-1
 
-!URxvt*font:           xft:Monaco:size=7.5
-!URxvt*boldFont:       xft:Monaco:size=7.5
+!URxvt*font:           xft:Hack:size=7
+!URxvt*boldFont:       xft:Hack:size=7
 
-URxvt.buffered:        true
-!URxvt*letterSpace:     -2
+URxvt*font:           xft:Monaco:size=7.5
+URxvt*boldFont:       xft:Monaco:size=7.5
+
+URxvt*buffered:        true
+URxvt*letterSpace:     -1
 URxvt*lineSpace:       0
 URxvt*scrollBar:       false
-URxvt*internalBorder:  4
+URxvt*internalBorder:  14
 URxvt*externalBorder:  0
-URxvt*cursorUnderline: true
 
 URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
 URxvt.url-select.launcher:  /usr/bin/chromium

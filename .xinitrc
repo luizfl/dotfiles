@@ -15,18 +15,19 @@ if [[ ! "`pgrep mpd`" ]]; then
   mpd
 fi
 
-xset r rate 250 50
 xset +fp "$HOME/.fonts"
 xset fp rehash
+xset r rate 250 50
+setxkbmap -option terminate:ctrl_alt_bksp
 xrdb -load "$HOME/.Xresources"
 xsetroot -cursor_name left_ptr
-setxkbmap -option terminate:ctrl_alt_bksp
 
-compton -b
-urxvtd -q                 &
-#sh ~/.fehbg               &
-hsetroot -solid "#DDB169" &
-unclutter -idle 2         &
+#compton -b
+urxvtd -q &
+setroot --restore &
+unclutter -noevents -idle 2 &
+autocutsel -fork &
+autocutsel -selection PRIMARY -fork &
 
-#exec bspwm
-exec 2bwm
+exec bspwm
+#exec 2bwm

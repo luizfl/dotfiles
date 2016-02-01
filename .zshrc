@@ -94,17 +94,17 @@ alias pong='ping -c 3 www.google.com'
 #}}}
 
 #{{{ Functions
-function cd()
+function cd
 {
   builtin cd "$@"; ls
 }
 
-function mkcd()
+function mkcd
 {
   mkdir -p "$@"; cd "$_"
 }
 
-function chars()
+function chars
 {
   echo "
   A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
@@ -115,12 +115,12 @@ function chars()
   "
 }
 
-function psgrep()
+function psgrep
 {
   ps axuf | grep -v grep | grep "$@" -i
 }
 
-function conf()
+function conf
 {
   case "$1" in
     bspwm)
@@ -193,12 +193,12 @@ function conf()
   esac
 }
 
-function xfont()
+function xfont
 {
   xrdb -query | grep font | head -1 | cut -f 2
 }
 
-function ext()
+function ext
 {
   if [ -f "$1" ]; then
     case "$1" in
@@ -252,9 +252,14 @@ function ext()
   fi
 }
 
-function open()
+function open
 {
-  xdg-open "$1" &> /dev/null &disown
+  xdg-open "$1" &> /dev/null &disown;
+}
+
+function sx
+{
+  sxiv -rtq "$@"
 }
 #}}}
 
@@ -333,22 +338,15 @@ fi
 #{{{ Prompt
 function precmd()
 {
-  MIN=1
-  MAX=6
-  RANDOM_COLOR="$(( ${MIN}+(`od -An -N2 -i /dev/random` )%(${MAX}-${MIN}+1) ))"
-  PROMPT="%F{$RANDOM_COLOR}────%f "
+  #MIN=1
+  #MAX=6
+  #RANDOM_COLOR="$(( ${MIN}+(`od -An -N2 -i /dev/random` )%(${MAX}-${MIN}+1) ))"
 
-  #DIR=`pwd|sed -e "s|$HOME|~|"`;
-  #if [ ${#DIR} -gt 30 ]; then
-  #  CWD="${DIR:0:12}...${DIR:${#DIR}-15}"
-  #else
-  #  CWD="$DIR"
-  #fi
-  #RPROMPT="%F{8}$CWD"
-
-  print -Pn "\e]0;%n@%M:%~\a" ]
+  print -Pn "\e]0;%n@%M:%~\a"
 }
 
+export PROMPT='%F{14}%B%#%b%f '
+export RPROMPT='%(0?..%F{1}!%F{9}%B%?%b%f)'
 #}}}
 
 #{{{ Misc
