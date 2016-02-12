@@ -7,11 +7,11 @@ allow_bold = false
 dynamic_title = true
 urgent_on_bell = true
 clickable_url = true
-font = monaco 7.5
+font = sourcecodepro 7.5
 scrollback_lines = 1000
 search_wrap = true
 #icon_name = terminal
-#geometry = 640x480
+geometry = 85x25
 
 # "system", "on" or "off"
 cursor_blink = off
@@ -23,7 +23,7 @@ cursor_shape = block
 #browser = firefox
 
 # set size hints for the window
-size_hints = false
+size_hints = true
 
 # emit escape sequences for other keys modified by Control
 #modify_other_keys = false
@@ -31,52 +31,52 @@ size_hints = false
 [colors]
 
 # special
-foreground      = #998673
-foreground_bold = #998673
-cursor          = #998673
-background      = #1A1514
+foreground      = #555555
+foreground_bold = #555555
+cursor          = #555555
+background      = #f5f0ee
 
 # black
-color0  = #332927
-color8  = #4D3E3A
+color0  = #c5c5cc
+color8  = #a5a5aa
 
 # red
-color1  = #745446
-color9  = #8C6554
+color1  = #aa5555
+color9  = #883333
 
 # green
-color2  = #5E6647
-color10 = #768059
+color2  = #55aa88
+color10 = #338866
 
 # yellow
-color3  = #7F8059
-color11 = #98996A
+color3  = #aa7755
+color11 = #885533
 
 # blue
-color4  = #555559
-color12 = #6D6D73
+color4  = #5588aa
+color12 = #336688
 
 # magenta
-color5  = #595059
-color13 = #736773
+color5  = #8877aa
+color13 = #665588
 
 # cyan
-color6  = #4C5955
-color14 = #62736E
+color6  = #55aaaa
+color14 = #338888
 
 # white
-color7  = #504339
-color15 = #806B5B
+color7  = #858588
+color15 = #656566
 
 [hints]
-font = fixed 8
-foreground = #959595
-background = #000000
-active_foreground = #e68080
-active_background = #3f3f3f
-padding = 2
-border = #202020
-border_width = 1
-roundness = 0
+#font = Monospace 12
+#foreground = #dcdccc
+#background = #3f3f3f
+#active_foreground = #e68080
+#active_background = #3f3f3f
+#padding = 2
+#border = #3f3f3f
+#border_width = 0.5
+#roundness = 2.0
 
 # vim: ft=dosini cms=#%s
