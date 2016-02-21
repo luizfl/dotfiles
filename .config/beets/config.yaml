@@ -1,0 +1,10 @@
+directory: /media/data/Music
+library:   /media/data/library.blb
+
+plugins: copyartifacts fetchart
+
+import:
+  move: yes
+
+paths:
+  default: $albumartist/[$year] $album/$track $title

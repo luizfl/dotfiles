@@ -1,8 +1,10 @@
-setopt autocd autolist cdablevars extendedglob nobeep noclobber print_eight_bit\
-  autoresume dotglob longlistjobs pushdsilent rcquotes recexact
-unsetopt autoparamslash bgnice correctall
+ZDOTDIR=$HOME/.zsh
+fpath=( $ZDOTDIR/functions $fpath )
 
-ZDOTDIR="$HOME/.zsh"
+#{{{ Options
+setopt autocd autolist cdablevars extendedglob noclobber dotglob longlistjobs
+unsetopt correctall
+#}}}
 
 #{{{ Exports
 PATHS=(
@@ -23,9 +25,9 @@ export SUDO_EDITOR="$EDITOR"
 export PAGER="/bin/less"
 export BROWSER="/usr/bin/chromium"
 
-[[ $XDG_CACHE_HOME ]] || export XDG_CACHE_HOME="$HOME/.cache"
+[[ $XDG_CACHE_HOME ]]  || export XDG_CACHE_HOME="$HOME/.cache"
 [[ $XDG_CONFIG_HOME ]] || export XDG_CONFIG_HOME="$HOME/.config"
-[[ $XDG_DATA_HOME ]] || export XDG_DATA_HOME="$HOME/.local/share"
+[[ $XDG_DATA_HOME ]]   || export XDG_DATA_HOME="$HOME/.local/share"
 
 export _JAVA_OPTIONS='-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dawt.useSystemAAFontSettings=true'
 export JAVA_FONTS=/usr/share/fonts/TTF
@@ -54,7 +56,6 @@ export HISTFILE="$ZDOTDIR/history"
 setopt inc_append_history
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
-setopt promptsubst
 #}}}
 
 #{{{ Aliases
@@ -72,8 +73,8 @@ alias pg='pgrep -l'
 alias df='df -h'
 alias du='du -sh'
 alias free='free -m'
-alias cp='cp -rv'
-alias rm='rm -rv'
+alias cp='cp -v'
+alias rm='rm -v'
 alias mv='mv -v'
 alias mkdir='mkdir -pv'
 
@@ -120,14 +121,14 @@ function psgrep
   ps axuf | grep -v grep | grep "$@" -i
 }
 
-function conf
+function cfg
 {
   case "$1" in
     bspwm)
       nvim "$HOME/.config/bspwm/bspwmrc"
       ;;
     sxhkd)
-      nvim "$HOME/.config/bspwm/sxhkdrc"
+      nvim "$HOME/.config/bspwm/keybindings"
       ;;
     vim|nvim)
       nvim "$HOME/.config/nvim/init.vim"
@@ -345,45 +346,38 @@ function precmd()
   print -Pn "\e]0;%n@%M:%~\a"
 }
 
-export PROMPT='%F{14}%B%#%b%f '
-export RPROMPT='%(0?..%F{1}!%F{9}%B%?%b%f)'
+autoload promptinit && promptinit
+prompt pure
 #}}}
 
-#{{{ Misc
-# dircolors
+#{{{ Dircolors
 eval $( dircolors -b $HOME/.dir_colors )
-
-# command not found
-source "/usr/share/doc/pkgfile/command-not-found.zsh"
 #}}}
 
-#{{{ zsh-syntax-highlighting
-source "$ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+#{{{ Plugins
+ZSH_SYNTAX_HIGHLIGHTING="$ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+if [ -f $ZSH_SYNTAX_HIGHLIGHTING ] ; then
+  source $ZSH_SYNTAX_HIGHLIGHTING
 
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+  ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+  ZSH_HIGHLIGHT_STYLES[alias]='fg=magenta,bold'
+  ZSH_HIGHLIGHT_STYLES[function]='fg=blue,bold'
+  ZSH_HIGHLIGHT_STYLES[command]="fg=blue,bold"
+  ZSH_HIGHLIGHT_STYLES[hashed-command]="fg=blue,bold"
+  ZSH_HIGHLIGHT_STYLES[builtin]="fg=yellow,bold"
+  ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=233,bg=red')
+  ZSH_HIGHLIGHT_PATTERNS+=('sudo *' 'fg=233,bg=red')
+fi
 
-ZSH_HIGHLIGHT_STYLES[alias]='fg=magenta,bold'
-ZSH_HIGHLIGHT_STYLES[function]='fg=blue,bold'
-ZSH_HIGHLIGHT_STYLES[command]="fg=blue,bold"
-ZSH_HIGHLIGHT_STYLES[hashed-command]="fg=blue,bold"
-ZSH_HIGHLIGHT_STYLES[builtin]="fg=yellow,bold"
+ZSH_HISTORY_SUBSTRING_SEARCH="$ZDOTDIR/zsh-history-substring-search/zsh-history-substring-search.zsh"
+if [ -f $ZSH_HISTORY_SUBSTRING_SEARCH ] ; then
+  source $ZSH_HISTORY_SUBSTRING_SEARCH
 
-ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=black,bg=red')
-ZSH_HIGHLIGHT_PATTERNS+=('sudo' 'fg=black,bg=red')
-#}}}
-
-#{{{ zsh-history-substring-search
-source "$ZDOTDIR/zsh-history-substring-search/zsh-history-substring-search.zsh"
-
-# bind UP and DOWN arrow keys
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
-
-# bind P and N for EMACS mode
-bindkey -M emacs '^P' history-substring-search-up
-bindkey -M emacs '^N' history-substring-search-down
-
-# bind k and j for VI mode
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
+  bindkey "$terminfo[kcuu1]" history-substring-search-up
+  bindkey "$terminfo[kcud1]" history-substring-search-down
+  bindkey -M emacs '^P'      history-substring-search-up
+  bindkey -M emacs '^N'      history-substring-search-down
+  bindkey -M vicmd 'k'       history-substring-search-up
+  bindkey -M vicmd 'j'       history-substring-search-down
+fi
 #}}}
