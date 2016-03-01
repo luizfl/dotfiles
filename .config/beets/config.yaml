@@ -1,7 +1,7 @@
 directory: /media/data/Music
-library:   /media/data/library.blb
+library:   /media/data/Music/library.blb
 
-plugins: copyartifacts fetchart
+plugins: copyartifacts
 
 import:
   move: yes
