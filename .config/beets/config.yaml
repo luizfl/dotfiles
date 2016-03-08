@@ -1,10 +1,16 @@
 directory: /media/data/Music
 library:   /media/data/Music/library.blb
 
-plugins: copyartifacts
-
 import:
   move: yes
 
 paths:
   default: $albumartist/[$year] $album/$track $title
+
+plugins: copyartifacts fetchart
+
+fetchart:
+  auto: yes
+  cautious: yes
+  cover_names: cover folder front
+  remote_priority: no
